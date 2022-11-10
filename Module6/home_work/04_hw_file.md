@@ -22,7 +22,24 @@
 ### Решение задачи
 
 ```python
-# TODO: you code here...
+fruit = {}
+with open("fruits.txt", "r") as f:
+  for line in f:
+    if len(line)>1:
+      frst = line[0].upper()
+      if frst in fruit:
+        add_frut = fruit[frst]
+        add_frut.append(line)
+        fruit.update({frst : add_frut})
+		# тут видимо что-то лишнее. Можно словарь не обновлять, хватит и append?
+      else:
+        fruit.update({frst : [line]})
+
+for key, value in fruit.items():
+  file='fruits_'+key+'.txt'
+  with open(file, "w", encoding="UTF-8") as w:
+    for record in value:
+      w.write(record)
 ```
 
 ---
