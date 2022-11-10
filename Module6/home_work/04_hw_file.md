@@ -28,10 +28,7 @@ with open("fruits.txt", "r") as f:
     if len(line)>1:
       frst = line[0].upper()
       if frst in fruit:
-        add_frut = fruit[frst]
-        add_frut.append(line)
-        fruit.update({frst : add_frut})
-		# тут видимо что-то лишнее. Можно словарь не обновлять, хватит и append?
+        fruit[frst].append(line)
       else:
         fruit.update({frst : [line]})
 
