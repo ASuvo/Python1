@@ -61,10 +61,17 @@ for key, value in worker.items():
   l1=10-len(value[0])
   l2=10-len(value[1])
   print (value[0]," "*l1, value[1]," "*l2, value[6] )
-```
-
----
-Другое решение
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  Другое решение
 info = []
 with open(f'data/workers.txt', 'r', encoding='UTF-8') as file:
     for line in file:
@@ -106,3 +113,7 @@ for el in workers:
 
 
 
+
+```
+
+---
