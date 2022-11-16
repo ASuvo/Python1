@@ -64,7 +64,45 @@ for key, value in worker.items():
 ```
 
 ---
+Другое решение
+info = []
+with open(f'data/workers.txt', 'r', encoding='UTF-8') as file:
+    for line in file:
+        info.append(line.split())
 
+workers = {}
+for i in range(1, len(info)):
+    workers[i] = {}
+for i in range(1, len(info)):
+    workers[i]['Имя'] = info[i][0]
+    workers[i]['Фамилия'] = info[i][1]
+    workers[i]['Зарплата'] = info[i][2]
+    workers[i]['Должность'] = info[i][3]
+    workers[i]['Норма часов'] = info[i][4]
+
+workers = list(workers.values())
+
+info = []
+with open(f'data/hours_of.txt', 'r', encoding='UTF-8') as file:
+    for line in file:
+        info.append(line.split())
+
+for i in range(1, len(info)):
+    for j in range(len(workers)):
+        if info[i][1] == workers[j]['Фамилия']:
+            workers[j]['Отработано_часов'] = info[i][2]
+
+
+for el in workers:
+    print(el)
+    if int(el['Отработано_часов']) <= int(el['Норма часов']):
+        koef = int(el['Отработано_часов'])/int(el['Норма часов'])
+        print(f"Зарплата работника составила:{int(koef*int(el['Зарплата']))} рублей")
+    else:
+        salary_per_hour = int(el['Зарплата'])/int(el['Норма часов'])
+        pererabotka = int(el['Отработано_часов']) - int(el['Норма часов'])
+        additional_salary = pererabotka*salary_per_hour*2
+        print(f"Зарплата работника составила:{int(el['Зарплата']) + additional_salary} рублей")
 
 
 
